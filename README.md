@@ -1,5 +1,6 @@
 # MyGPT
 **Atharv Kshirsagar 210050025**
+
 **Library Installation**
 
 If you want to `import mingpt` into your project:
@@ -10,11 +11,21 @@ cd MyGPT
 cd myGPT
 pip install -e .
 ```
+
+**Unit tests**
+
+Coverage is not super amazing just yet but:
+
+```
+python -m unittest discover tests
+``
+
 **Important Files**
+
 `MyGPT/myGPT/mygpt :` This file conatins the main model has has three main files. `MyGPT/myGPT/mygpt/models.py` contains the implementation of transformer model.'MyGPT/myGPT/mygpt/bpe.py' contains the implemamtation of subword tokenization algorithm. 'MyGPT/myGPT/mygpt/trainer.py' is used to train the model and is independent of the GPT model.
  `MyGPT/myGPT/projects/adder` Our model is trained to add ndigits number and predict the sum.It uses Autoregressive  Generation.
 
- There is a `tunedmyGPT` folder that is which is myGPT with some changes to perform char and image related tasks.Please USE GPU or reduce batch size in case of Out of Memory Boung .Recommended to run every model in this file in Google Collab.
+ There is a `tunedmyGPT` folder that is which is myGPT with some changes to perform char and image related tasks.Please USE GPU or reduce batch size in case of Out of Memory Bound .Recommended to run every model in this file in Google Collab.
 
 Model: block_size = 128, n_layer=3, n_head=8, n_embd=512
 
@@ -23,6 +34,7 @@ Trainer: max_epochs=150, batch_size=256, learning_rate=6e-4, lr_decay=True, warm
 (this is using old play_char.ipynb with smaller epoch size)
 
 tunedmyGPT:
+
 ```
 number of parameters: 9.983488e+06
 epoch 1 iter 33: train loss 2.61996. lr 5.999354e-04:  [00:08<00:00,  4.19it/s]
@@ -62,13 +74,40 @@ epoch 150 iter 33: train loss 0.68462. lr 6.000000e-05:  [00:07<00:00,  4.51it/s
 
 **References**
 
+**Time-weighting**
+```
+self.time_weighting = nn.Parameter(torch.ones(self.n_head, config.block_size, config.block_size))
+......
+att = F.softmax(att, dim=-1)
+att = att * self.time_weighting[:,:T,:T] # this is "time-weighting"
+att = self.attn_drop(att)
+```
+Time-weighting works because tokens from different distances shall have different impacts on the current token.
+Moreover, the self-attention effects shall be changed for early tokens because they have shorter history-windows.
+
+p.s. because time_weighting is mostly a circulant matrix, use the following code to save more parameters:
+```
+self.time_weight = nn.Parameter(torch.ones(self.n_head, config.block_size))
+self.time_bias = nn.Parameter(torch.ones(self.n_head, 1, config.block_size)) # dealing with early tokens 
+......
+ww = F.pad(self.time_weight, (0, TT))
+ww = torch.tile(ww, [TT])
+ww = ww[:, :-TT].reshape(-1, TT, 2 * TT - 1)
+ww = ww[:, :, TT-1:]
+ww = ww[:, :T, :T] # make a circulant matrix
+time_weighting = ww * self.time_bias[:, :, :T]
+``
+p.s. with time-weighting, you can even remove positional encoding in deep models.
+
+p.s. there might be a closed-form solution for optimal time-weighting.
+
 Code:
 
     `openai/gpt-2` 
     `openai/image-gpt` 
     `huggingface/transformers` 
      Google's "Attention is All you Need"
-     Andrej Karpathy's YOutube lectures.
+     Andrej Karpathy's Youtube lectures.
 
 **More**
      *We can also use our model for Quantization but due to unavaliability of GPU I am not able to do it.
