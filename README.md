@@ -95,12 +95,12 @@ ww = ww[:, :-TT].reshape(-1, TT, 2 * TT - 1)
 ww = ww[:, :, TT-1:]
 ww = ww[:, :T, :T] # make a circulant matrix
 time_weighting = ww * self.time_bias[:, :, :T]
-``
+```
 p.s. with time-weighting, you can even remove positional encoding in deep models.
 
 p.s. there might be a closed-form solution for optimal time-weighting.
 
-Code:
+Code Reference:
 
     `openai/gpt-2` 
     `openai/image-gpt` 
