@@ -33,6 +33,9 @@ Trainer: max_epochs=150, batch_size=32, learning_rate=6e-4, lr_decay=True, warmu
 
 (this is using old play_char.ipynb with smaller epoch size)
 
+`test_huggingface_import.py :` This test ensures that the custom GPT model (myGPT) behaves similarly to the Hugging Face Transformers GPT-2 model in terms of tokenization, logits generation, and text generation.
+
+
 tunedmyGPT:
 
 ```
@@ -220,3 +223,5 @@ test final score: 3/10 = 30.00% correct
 
 ```
 Note that to run price.py .Include in in projects repo or in myGPT(or mygpt) folder.
+
+
