@@ -187,7 +187,7 @@ iter_dt 14.43ms; iter 5800: train loss 0.06916
 iter_dt 9.88ms; iter 5900: train loss 0.06916
 
 ```
-nes are part of the evaluation process for your model on both the training and test datasets. Let's break down the information provided:
+Lnes are part of the evaluation process for your model on both the training and test datasets. Let's break down the information provided:
 
 Prediction and Ground Truth Comparison:
         Each line represents a specific example during evaluation.
