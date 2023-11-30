@@ -109,8 +109,11 @@ Code Reference:
      Andrej Karpathy's Youtube lectures.
 
 **More**
+
      *We can also use our model for Quantization but due to unavaliability of GPU I am not able to do it.
-     *We can improve our model for GPT-4 
+     
+     *We can improve our model for GPT-4
+     
      *Hyperparameters may not be great.
     
 
