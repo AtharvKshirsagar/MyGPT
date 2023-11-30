@@ -27,7 +27,7 @@ python -m unittest discover tests
 
 Model: block_size = 128, n_layer=3, n_head=8, n_embd=512
 
-Trainer: max_epochs=150, batch_size=256, learning_rate=6e-4, lr_decay=True, warmup_tokens=512 * 20, final_tokens=150 * len(train_dataset) * block_size
+Trainer: max_epochs=150, batch_size=32, learning_rate=6e-4, lr_decay=True, warmup_tokens=512 * 20, final_tokens=150 * len(train_dataset) * block_size
 
 (this is using old play_char.ipynb with smaller epoch size)
 
