@@ -13,8 +13,7 @@ pip install -e .
 ```
 
 **Unit tests**
-
-Coverage is not super amazing just yet but:
+Not amazing but could try
 
 ```
 python -m unittest discover tests
