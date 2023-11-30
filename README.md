@@ -107,7 +107,7 @@ Code Reference:
     `openai/image-gpt` 
     `huggingface/transformers` 
      Google's "Attention is All you Need"
-     Andrej Karpathy's Youtube lectures.
+     Youtube lectures.
 
 **More (Beyond Project)**
      *We can improve our model for GPT-4
