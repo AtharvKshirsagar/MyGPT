@@ -219,3 +219,5 @@ GPT claims that with [2, 0, 2, 0, 2, 0, 2, 2, 0, 2] the future price dynamics is
 test final score: 3/10 = 30.00% correct
 
 ```
+Note that to run price.py .Include in in projects repo or in myGPT(or mygpt) folder
+n
