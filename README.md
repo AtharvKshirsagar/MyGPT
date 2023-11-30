@@ -6,7 +6,7 @@
 If you want to `import mygpt` into your project:
 ```
 
-git clone 
+git clone https://github.com/AtharvKshirsagar/MyGPT.git 
 cd MyGPT
 cd myGPT
 pip install -e .
