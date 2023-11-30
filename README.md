@@ -11,6 +11,8 @@ cd MyGPT
 cd myGPT
 pip install -e .
 ```
+**Other normal ML libraries(like numpy,pytorch) can be installed using pip**
+
 **Unit tests**
 Not amazing but could try
 
