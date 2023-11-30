@@ -117,7 +117,7 @@ Code Reference:
 
       *We can train our model to generate reponses based on queries related to particular PDF just as PDFGPT would do.
 
-      `price.py :` Though this project is nearly completed but there may be some unexpected errors.This project predicts future cryptocurrency price.May be nearly 70 percent accuracy is acheived.
+      `price.py :` Though this project is nearly completed but there may be some unexpected errors.This project predicts future cryptocurrency price.May be nearly 35 percent accuracy is acheived.
      
      *We can improve our model for GPT-4
      
